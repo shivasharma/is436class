@@ -1,0 +1,81 @@
+USE [IS436]
+GO
+
+/****** Object:  Table [dbo].[Author]    Script Date: 10/16/2023 1:56:33 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Author](
+	[AuthorID] [int] NOT NULL,
+	[FirstName] [varchar](50) NOT NULL,
+	[LastName] [varchar](50) NOT NULL,
+	[Email] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Author] PRIMARY KEY CLUSTERED 
+(
+	[AuthorID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+USE [IS436]
+GO
+
+/****** Object:  Table [dbo].[AuthorBook]    Script Date: 10/16/2023 2:11:47 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AuthorBook](
+	[Authorid] [int] NOT NULL,
+	[BookID] [int] NOT NULL,
+ CONSTRAINT [PK_AuthorBook] PRIMARY KEY CLUSTERED 
+(
+	[Authorid] ASC,
+	[BookID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+USE [IS436]
+GO
+
+/****** Object:  Table [dbo].[Book]    Script Date: 10/16/2023 2:12:37 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Book](
+	[BookId] [int] NOT NULL,
+	[Title] [varchar](50) NULL,
+	[PubDate] [date] NULL,
+	[ListPrice] [money] NULL,
+	[AuthorID] [int] NULL,
+ CONSTRAINT [PK_Book] PRIMARY KEY CLUSTERED 
+(
+	[BookId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Book]  WITH CHECK ADD  CONSTRAINT [FK_Book_Author] FOREIGN KEY([AuthorID])
+REFERENCES [dbo].[Author] ([AuthorID])
+GO
+
+ALTER TABLE [dbo].[Book] CHECK CONSTRAINT [FK_Book_Author]
+GO
+
+
+
+
+
+
