@@ -121,6 +121,19 @@ INSERT INTO [dbo].[Author]
 
 GO
 
+SELECT
+   Book.BookId,
+   Book.Title,
+  Book.PubDate,
+  Author.AuthorID,
+  Author.FirstName,
+  Author.LastName
+FROM Book
+JOIN AuthorBook
+  ON Book.BookId = AuthorBook.BookID
+JOIN Author
+  ON Author.AuthorID = AuthorBook.Authorid;
+
 
 
 
