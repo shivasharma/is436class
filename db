@@ -104,6 +104,25 @@ GO
 ALTER TABLE [dbo].[BookSingleAuthor] CHECK CONSTRAINT [FK_BookSingleAuthor_Author]
 GO
 
+USE [IS436]
+GO
+
+INSERT INTO [dbo].[Author]
+           ([AuthorID]
+           ,[FirstName]
+           ,[LastName]
+           ,[Email])
+     VALUES
+         ( 1	Tucker	Morrision	tucker@umbc.edu,
+2	Robert	Allen	rallen@umbc.edu,
+3	Joran	Winters	jordan@umbc.edu,
+4	shiva	sharma	ss12@umbc.edu,
+5	test	test	test@test.com)
+
+GO
+
+
+
 
 
 
